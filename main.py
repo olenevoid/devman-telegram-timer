@@ -4,11 +4,6 @@ from ptbot import Bot
 from pytimeparse import parse
 
 
-load_dotenv()
-
-TG_TOKEN = getenv('TG_TOKEN')
-
-
 def render_progressbar(
         total,
         iteration,
@@ -77,7 +72,9 @@ def bot_reply(chat_id: str, message: str, bot: Bot):
 
 
 def main():
-    bot = Bot(TG_TOKEN)
+    load_dotenv()
+    tg_token = getenv('TG_TOKEN')
+    bot = Bot(tg_token)
     bot.reply_on_message(start_timer, bot=bot)
     bot.run_bot()
 
